@@ -22,11 +22,11 @@ int main(int argc, char* argv[]){
 //original file, copped file open
 
   if( (fd1 = open(argv[1], O_RDONLY)) == -1 ){
-    perror("error open fd1");
+    perror("error : ");
     return 1;
   }
   if( (fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0755)) == -1 ){
-    perror("error open fd2");
+    perror("error: ");
     return 1;
   }
 
@@ -42,7 +42,10 @@ int main(int argc, char* argv[]){
     write(fd2, buf, nread);
   }
 
+//close files
+
   close(fd1); 
   close(fd2); 
 
   return 0;
+}
