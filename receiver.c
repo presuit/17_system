@@ -38,11 +38,10 @@ int main(int argc, char* argv[]){
 		}
 		else {
 			printf("[recv] : ");
-			for(int i = 0; i < strlen(buf); i++){
+			for(int i = 0; i < strlen(buf) + 1; i++){
 				printf("%c", buf[i]);
 			}
 			printf("\n");
-			fflush(stdout);
 			memset(buf, ' ', strlen(buf) + 1);
 		}
 	}
