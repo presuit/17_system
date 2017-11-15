@@ -21,13 +21,6 @@ int main(int argc, char* argv[]){
 	}
 
 	//create FIFO file
-	if( mkfifo(argv[1], FIFO_PERM) == -1 ){
-		if(errno!= EEXIST){
-			fprintf(stderr, "failed to create FIFO\n");
-			return 1;
-		}
-	}
-
 	//open file
 	if( (fd = open(argv[1], O_RDONLY)) == -1 ){
 		fprintf(stderr, "can't open FIFO file.");
@@ -44,8 +37,13 @@ int main(int argc, char* argv[]){
 			break;
 		}
 		else {
-			printf("[recv] : %s\n", buf);
-			memset(buf, ' ', strlen(buf));
+			printf("[recv] : ");
+			for(int i = 0; i < strlen(buf); i++){
+				printf("%c", buf[i]);
+			}
+			printf("\n");
+			fflush(stdout);
+			memset(buf, ' ', strlen(buf) + 1);
 		}
 	}
 	return 0;

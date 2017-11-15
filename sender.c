@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
 		buf[strlen(buf) - 1] = '\0';
 
 		if(!strcmp(buf, "quit")){
-			write(fd, buf, strlen(buf) + 1);
+			write(fd, buf, strlen(buf) + 1 );
 			break;
 		}
 
